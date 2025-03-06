@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI , HTTPException
 
 # instanciamos FastAPI
 # en Js sería: const app = new FastAPI();
@@ -26,4 +26,13 @@ def create_items(item: str):
 # definimos una ruta con un método GET por Id
 @app.get("/items/{item_id}")
 def read_item(item_id: int) -> str:
-    return items[item_id]
+    # si el item existe lo devolvemos
+    if item_id < len(items):
+        return items[item_id]
+    # si el item no existe lanzamos un error
+    else:
+        # raise se utiliza para lanzar una excepción de forma explícita en Python.
+        # En js sería: throw new Error()
+        # f"{}" es un string literal en Python" 
+        #En js sería: `${}`
+        raise HTTPException(status_code=404, detail= f"Item {item_id} not found")
