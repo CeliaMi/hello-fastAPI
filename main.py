@@ -1,8 +1,16 @@
 from fastapi import FastAPI , HTTPException
+from pydantic import BaseModel
 
 # instanciamos FastAPI
 # en Js sería: const app = new FastAPI();
 app = FastAPI()
+
+# creamos el Modelo a partir de BaseModel de Pydantic
+# En Js sería: Item extends BaseModel {}
+
+class Item(BaseModel):
+    text: str = None
+    is_done: bool = False
 
 # definimos una ruta para le método GET
 # estamos usando el decorador @app.get("/") para asociar la función read_root() con la ruta /.
@@ -18,14 +26,20 @@ items = []
 
 # definimos una ruta con un método POST
 @app.post("/items")
-def create_items(item: str):
+def create_items(item: Item):
     # añadimos el item al array
     items.append(item)
     return items
 
+# definimos una ruta con un método GET esta vez si para nuestra API
+# response_model es un argumento que se utiliza para indicar el modelo de respuesta que se espera.
+@app.get("/items", response_model=list[Item])
+def list_items(limit: int = 10):
+    return items[0:limit]
+
 # definimos una ruta con un método GET por Id
-@app.get("/items/{item_id}")
-def read_item(item_id: int) -> str:
+@app.get("/items/{item_id}", response_model=Item)
+def read_item(item_id: int) :
     # si el item existe lo devolvemos
     if item_id < len(items):
         return items[item_id]
