@@ -6,7 +6,7 @@ app = FastAPI()
 
 # definimos una ruta
 # estamos usando el decorador @app.get("/") para asociar la función read_root() con la ruta /.
-# los decoradores como son funciones que envuelven otras funciones
+# los decoradores son como funciones que envuelven otras funciones
 # en Js sería: app.get("/", (req, res) => res.send({ Hello: "World" }));
 @app.get("/")
 def read_root():
