@@ -19,5 +19,11 @@ items = []
 # definimos una ruta con un método POST
 @app.post("/items")
 def create_items(item: str):
+    # añadimos el item al array
     items.append(item)
     return items
+
+# definimos una ruta con un método GET por Id
+@app.get("/items/{item_id}")
+def read_item(item_id: int) -> str:
+    return items[item_id]
