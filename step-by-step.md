@@ -1,6 +1,9 @@
 ¿¿cooodeamosss yaaa??
 
 ¡Comenzamoos!
+Crea tu carpeta para tu nuevo proyecto `📁hello-fastAPI` y abrela en tu editor de código
+
+*Para poder realizar este proyecto necesitas tener python instalado en tu ordendor.
 
 ### Creamos el entorno
 
@@ -48,7 +51,7 @@ pip freeze > requirements.txt
 
 si quieres hacerlo de una forma muy similar a la gestión de paquetes de npm recomiendan [Poetry](https://python-poetry.org/), Yo aún no lo conozco pero tengo ganas, seguro queda todo muy ordenadito✨
 
-Bueno Continuamos… dejo por aquí los comandos que harían falta pero las personas que después quisieran clonar vuestro respositorio y hacerlo funcionar, los clásicos pasos de instalación del readme...
+Bueno Continuamos… dejo por aquí los comandos que harían falta para las personas que después quisieran clonar vuestro respositorio y hacerlo funcionar, los clásicos pasos de instalación del readme...
 
 - Los comandos que tendrá que seguir la persona que se descargue este repo serán:
     
@@ -85,7 +88,7 @@ app = FastAPI()
 
 # definimos una ruta
 # estamos usando el decorador @app.get("/") para asociar la función read_root() con la ruta /.
-# los decoradores es que son funciones que envuelven otras funciones
+# los decoradores son funciones que envuelven otras funciones
 # en Js sería: app.get("/", (req, res) => res.send({ Hello: "World" }));
 @app.get("/")
 def read_root():
@@ -109,7 +112,7 @@ bien, vamos a por la siguiente ruta
 ### Ruta para el Método POST
 
 ```python
-# vamos a crear un array vacio para poder tener algún sitio donde postear algo ya que aún no tenemos la base de datos
+# vamos a crear un array vacío para poder tener algún sitio donde postear algo, ya que aún no tenemos la base de datos
 items = [] 
 
 # definimos una ruta con un método POST
@@ -161,8 +164,8 @@ def read_item(item_id: int) -> str:
     else:
         # raise se utiliza para lanzar una excepción de forma explícita en Python.
         # En js sería: throw new Error()
-        # f"{}" es un string literal en Python" 
-        #En js sería: `${}`
+        # f"{}" es un string literal en Python
+        # En js sería: `${}`
        👉 raise HTTPException(status_code=404, detail= f"Item {item_id} not found")
 ```
 
@@ -176,12 +179,14 @@ from pydantic import BaseModel
 ```
 
 ```python
+# creamos el Modelo a partir de BaseModel de Pydantic
+# En Js sería: Item extends BaseModel {}
 class Item(BaseModel):
     text: str = None
     is_done: bool = False
 ```
 
-La estructura de los datos que responde nuestra API ahora seguirá la estructura del modelo. Ahora pasamos a tipar todo con nuestra nueva interfaz `Item`. Digo interfaz porque vengo de TypeScript en  Python sería más correcto decir:
+La estructura de los datos que responde nuestra API ahora seguirá la estructura del modelo. Ahora pasamos a tipar todo con nuestra nueva interfaz `Item`. Digo interfaz porque vengo de TypeScript en Python sería más correcto decir:
 
 “tipamos  usando nuestro esquema de validación `Item`" o ”pasamos a definir todo con nuestro modelo de datos `Item` basado en `BaseModel`"
 
