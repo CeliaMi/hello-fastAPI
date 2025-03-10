@@ -227,4 +227,6 @@ Basta con que pongas en la ruta del puerto que tienes levantado `/docs`
 
 ![image.png](./files/image-4.png)
 
-Este pequeño ejercicio esta basado en [este tutorial](https://www.youtube.com/watch?v=iWS9ogMPOI0), cuando tenga más tiempo me gustaría editar el proyecto un poco más y hacerlo si puede ser aún más sencillo y enfocado hacía JavaScript, gracias por llegar hasta aquí ¡Seguimos aprendiendo!
+Este pequeño ejercicio esta basado en [este tutorial](https://www.youtube.com/watch?v=iWS9ogMPOI0), y este a su vez en la [documentación oficial](https://fastapi.tiangolo.com/#installation)
+
+cuando tenga más tiempo me gustaría editar el proyecto un poco más y hacerlo si puede ser aún más sencillo y enfocado hacía JavaScript, gracias por llegar hasta aquí ¡Seguimos aprendiendo!
